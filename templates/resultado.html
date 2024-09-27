@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div id="particles-js"></div>
+    <div class="container mt-5 text-center content">
+        <h1>¡Te lo ganaste Alix ! 🎉</h1>
+        <p> De Hugo Para Ti <strong>{{ numero }}</strong></p>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#videoModal">
+            Abrir Regalo
+        </button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="videoModalLabel">Mira este video</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <iframe id="video" width="100%" height="315" src="" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Configuración de particles.js
+        particlesJS.load('particles-js', 'https://raw.githubusercontent.com/VincentGarreau/particles.js/master/particles.json', function() {
+            console.log('particles.js loaded');
+        });
+
+        // Reproducir el video cuando se abra el modal
+        $('#videoModal').on('show.bs.modal', function () {
+            document.getElementById('video').src = "https://el.phncdn.com/pics/gifs/032/674/052/32674052a.webm?autoplay=1";
+        });
+
+        // Detener el video al cerrar el modal
+        $('#videoModal').on('hidden.bs.modal', function () {
+            document.getElementById('video').src = "";
+        });
+    </script>
+</body>
+</html>
